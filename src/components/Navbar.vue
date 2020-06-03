@@ -18,37 +18,48 @@
 
       <md-menu md-direction="bottom-start">
         <md-button md-menu-trigger class="md-icon-button md-raised">
-          <md-icon>home</md-icon>
+          <md-icon>person</md-icon>
         </md-button>
         <md-menu-content>
           <md-menu-item>
-            <md-icon>person</md-icon>
-            <span>Sign in</span></md-menu-item>
+            <md-button @click="showDialog=!showDialog">
+              <md-icon>person</md-icon>
+              <span class="md-button-c-content">Sign in</span>
+            </md-button>
+          </md-menu-item>
+
           <md-menu-item>
-            <md-icon>person</md-icon>
-            <span>Sign up</span></md-menu-item>
+            <md-button>
+
+              <md-icon>lock</md-icon>
+              <span class="md-button-c-content">Sign out</span></md-button>
+          </md-menu-item>
         </md-menu-content>
       </md-menu>
 
     </section>
-    <Dialog/>
+    <Dialog :showDialog="showDialog"/>
 
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import Dialog from '@/components/Dialog/Dialog.vue'
-@Component({
-  components: { Dialog }
-})
+
+  @Component({
+    components: { Dialog }
+  })
 export default class Navbar extends Vue {
+    showDialog=false
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+.md-button-c-content{
+  padding-left: 10px !important;
+}
   .blog-navbar {
     background: white;
     /*width: 100vw;*/
