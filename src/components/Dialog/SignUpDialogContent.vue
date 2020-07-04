@@ -1,7 +1,109 @@
 <template>
-  <div >
+  <md-steppers :md-active-step.sync="active" :md-dynamic-height="true"
+               :md-linear="true" md-vertical  >
+    <md-step id="first" md-label="Create an account" :md-editable="false"  :md-done.sync="firstStep"  >
+      <form novalidate class="md-layout" >
+        <div class="md-layout md-gutter">
+          <div class="md-layout-item md-large-size-100">
+            <md-field>
+              <label>Email</label>
+              <md-input type="email"></md-input>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-large-size-100">
+            <md-field>
+              <label>Username</label>
+              <md-input ></md-input>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-large-size-100">
+            <md-field md-clearable>
+              <label>Password</label>
+              <md-input type="password" ></md-input>
+            </md-field>
+          </div>
+        </div>
+        <div class="md-layout-item md-large-size-100">
+          <md-button @click="completeFirstStep"   class="md-primary"> sign in</md-button>
+        </div>
+      </form>
 
-  </div>
+    </md-step>
+    <md-step id="second" md-label="Enter confirmation code" :md-editable="false"  :md-done.sync="secondStep" md-description="Check your email for the confirmation code"  >
+      <form novalidate class="md-layout" >
+        <div class="md-layout md-gutter">
+          <div class="md-layout-item md-large-size-100">
+            <md-field>
+              <label>Confirmation code</label>
+              <md-input type="text"></md-input>
+            </md-field>
+          </div>
+        </div>
+        <div class="md-layout-item md-large-size-100">
+          <md-button class="md-primary" @click="completeSecondStep"> Confirm</md-button>
+        </div>
+      </form>
+
+    </md-step>
+    <md-step id="third" md-label="Create a profile" :md-editable="false"   :md-done.sync="thirdStep"  >
+      <form novalidate class="md-layout" >
+        <div class="md-layout md-gutter ">
+          <div class="md-layout-item md-large-size-100">
+            <md-field>
+              <label>I'm a</label>
+              <md-select >
+                <md-option value="FrontEnd">Frontend Developer</md-option>
+                <md-option value="BackEnd">Backend Developer</md-option>
+                <md-option value="FullStack">FullStack Developer</md-option>
+                <md-option value="Mobile">Mobile Developer</md-option>
+                <md-option value="Game">Game Developer</md-option>
+                <md-option value="Student">Student</md-option>
+                <md-option value="Recruiter">Recruiter</md-option>
+                <md-option value="Hobbyist">Hobbyist</md-option>
+              </md-select>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-large-size-100">
+            <md-field>
+              <label>About Me</label>
+              <md-textarea>
+
+              </md-textarea>
+            </md-field>
+          </div>
+        </div>
+        <div class="md-layout-item md-large-size-100">
+          <md-field>
+            <label>Resume</label>
+            <md-file>
+
+            </md-file>
+          </md-field>
+        </div>
+
+        <div class="md-layout md-gutter">
+
+        <div class="md-layout-item md-large-size-50">
+
+        <md-chips class="md-primary" v-model="this.socialChips" md-placeholder="Add a url..." md-check-duplicated>
+          <div class="md-helper-text">My Social Websites and portfolios</div>
+        </md-chips>
+        </div>
+        <div class="md-layout-item md- md-large-size-50">
+
+          <md-chips class="md-primary" v-model="SkillChips" md-placeholder="Add a language, framework,library or skill..." md-check-duplicated>
+            <div class="md-helper-text">Skills and expertise</div>
+          </md-chips>
+        </div>
+        </div>
+        <div class="md-layout-item md-large-size-100">
+          <md-button  class="md-primary" @click="completeThirdStep"> Confirm</md-button>
+        </div>
+      </form>
+
+    </md-step>
+  </md-steppers>
+
 </template>
 
 <script lang="ts">
@@ -10,7 +112,27 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   @Component({
   })
 export default class SignUpDialogContent extends Vue {
+  socialChips: string[]=[]
+    SkillChips: string[]=[]
+firstStep=false
+    active='first'
+    completeFirstStep () {
+      this.firstStep = true
+      this.active = 'second'
+    }
+
+    secondStep=false
+    completeSecondStep () {
+      this.secondStep = true
+      this.active = 'third'
+    }
+
+    thirdStep=false
+    completeThirdStep () {
+      this.secondStep = true
+    }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
