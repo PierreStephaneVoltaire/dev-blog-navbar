@@ -17,12 +17,12 @@
     <section class="md-layout-item navbar-section blog-avatar">
 
       <md-menu md-direction="bottom-start">
-        <md-button md-menu-trigger class="md-icon-button md-raised">
+        <md-button @click="triggerNotImplemented" class="md-icon-button md-raised">
           <md-icon>person</md-icon>
         </md-button>
         <md-menu-content>
           <md-menu-item>
-            <md-button @click="showDialog=!showDialog">
+            <md-button @click="triggerNotImplemented">
               <md-icon>person</md-icon>
               <span class="md-button-c-content">Sign in</span>
             </md-button>
@@ -52,6 +52,9 @@ import Dialog from '@/components/Dialog/Dialog.vue'
   })
 export default class Navbar extends Vue {
     showDialog=false
+    triggerNotImplemented=() => {
+      alert("the User sign in/up feature hasn't been implemented yet")
+    }
 }
 </script>
 
