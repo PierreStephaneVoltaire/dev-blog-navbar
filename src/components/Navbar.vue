@@ -3,16 +3,16 @@
     <section class=" md-layout-item navbar-section">
       <md-button class="blog-title">
 
-        <span>Despair Driven Development</span>
+        <a class="home" href="/"><span>Despair Driven Development</span></a>
 
       </md-button>
     </section>
     <section class="md-layout-item navbar-section">
 
-      <md-field class="search">
-        <md-icon mdPrefix>search</md-icon>
-        <md-input class="md-small-size-100"/>
-      </md-field>
+<!--      <md-field class="search">-->
+<!--        <md-icon mdPrefix>search</md-icon>-->
+<!--        <md-input class="md-small-size-100"/>-->
+<!--      </md-field>-->
     </section>
     <section class="md-layout-item navbar-section blog-avatar">
 
@@ -53,10 +53,15 @@ export default class Navbar extends Vue {
     background: white;
     /*width: 100vw;*/
     position: static;
+    border-radius: 20px 20px 0px 0px;
+
     z-index: auto;
     min-height: 48px;
   }
-
+.home{
+  text-decoration: none !important;
+  color:black !important;
+}
   .blog-title {
     text-align: center;
     font-family: Roboto;
