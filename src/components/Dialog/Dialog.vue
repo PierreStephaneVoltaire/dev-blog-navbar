@@ -1,6 +1,6 @@
 <template>
-  <md-dialog :md-active.sync="show">
-    <md-tabs md-dynamic-height  >
+  <md-dialog  :md-active.sync="show">
+    <md-tabs  class="dialog" md-dynamic-height="true"  >
       <md-tab md-label="sign in">
         <SignInDialogContent></SignInDialogContent>
         </md-tab>
@@ -28,20 +28,24 @@ import ForgotPassWordDialogContent from '@/components/Dialog/ForgotPassWordDialo
 })
 export default class Dialog extends Vue {
    @Prop() showDialog=false
-  dialogIsShown=true
-  get show (): boolean {
-    console.log(this.showDialog, this.dialogIsShown)
-    return this.showDialog ? this.dialogIsShown : false
-  }
+   get show (): boolean {
+     return this.showDialog
+   }
 
-  set show (value: boolean) {
-    this.dialogIsShown = value
-  }
+   set show (value: boolean) {
+     this.$emit('update:showDialog', !this.showDialog)
+   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.dialog{
+ width: 50vw !important;
+  padding-bottom: 0.5rem;
+  overflow: initial;
+
+}
 
   .blog-navbar {
     background: white;

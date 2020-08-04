@@ -1,11 +1,15 @@
 <template>
   <div class="blog-navbar navbar md-layout">
     <section class=" md-layout-item navbar-section">
-      <md-button class="blog-title">
 
-        <a class="home" href="/"><span>Despair Driven Development</span></a>
+        <a class="home" href="/">
+          <md-button class="blog-title">
 
-      </md-button>
+          <span>Despair Driven Development</span>
+          </md-button>
+
+        </a>
+
     </section>
     <section class="md-layout-item navbar-section">
 
@@ -17,28 +21,29 @@
     <section class="md-layout-item navbar-section blog-avatar">
 
       <md-menu md-direction="bottom-start">
-        <md-button @click="triggerNotImplemented" class="md-icon-button md-raised">
+        <md-button md-menu-trigger class="md-icon-button md-raised">
           <md-icon>person</md-icon>
         </md-button>
         <md-menu-content>
           <md-menu-item>
-            <md-button @click="triggerNotImplemented">
+            <md-button @click="showDialog=!showDialog">
               <md-icon>person</md-icon>
               <span class="md-button-c-content">Sign in</span>
             </md-button>
           </md-menu-item>
 
-          <md-menu-item>
-            <md-button>
+<!--          <md-menu-item>-->
+<!--            <md-button>-->
 
-              <md-icon>lock</md-icon>
-              <span class="md-button-c-content">Sign out</span></md-button>
-          </md-menu-item>
+<!--              <md-icon>lock</md-icon>-->
+<!--              <span class="md-button-c-content">Sign out</span></md-button>-->
+<!--          </md-menu-item>-->
         </md-menu-content>
       </md-menu>
 
     </section>
-    <Dialog :showDialog="showDialog"/>
+    <Dialog v-bind:showDialog="showDialog"
+            v-on:update:showDialog="showDialog = $event"/>
 
   </div>
 </template>
@@ -63,15 +68,13 @@ export default class Navbar extends Vue {
 .md-button-c-content{
   padding-left: 10px !important;
 }
-  .blog-navbar {
-    background: white;
-    /*width: 100vw;*/
-    position: static;
-    border-radius: 20px 20px 0px 0px;
-
-    z-index: auto;
-    min-height: 48px;
-  }
+.blog-navbar {
+  background: linear-gradient(to right, white 33%,lightblue 66%,blue 85%, darkblue);
+  /*width: 100vw;*/
+  position: static;
+  z-index: auto;
+  min-height: 48px;
+}
 .home{
   text-decoration: none !important;
   color:black !important;
