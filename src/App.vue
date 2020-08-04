@@ -26,6 +26,7 @@ export default class App extends Vue {
   ));
   .md-dialog-container{
     max-height: 100% !important;
+    overflow: auto !important;
   }
   @import "~vue-material/dist/theme/all"; // Apply the theme
 
